@@ -199,3 +199,21 @@ arr.forEach((el)=>{
   return answer.join('')
 }
 console.log(vowelOne( "123, arou" ))
+///////////////////////////////////////////////////////
+function killer(suspectInfo, dead) {
+  let arr=[]
+  for(let key in suspectInfo ){
+   suspectInfo[key].forEach((element)=>{
+      for(let i=0;i<dead.length;i++){
+         if(element===dead[i]){
+           arr.push(key)
+         }
+      }
+    })
+  }
+  for(let i=0; i<arr.length;i++){
+    if(arr[i]===arr[i+1]||arr.length===1)
+      return arr[i]
+  }
+  
+}
