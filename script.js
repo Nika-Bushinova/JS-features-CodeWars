@@ -217,3 +217,21 @@ function killer(suspectInfo, dead) {
   }
   
 }
+/////////////////////////////////////////////////////////////
+function maxTriSum(numbers){
+ let arr=[];
+function array2(){
+  let unique=new Set(numbers);
+  return ([...unique])
+}
+let array=array2()
+array.sort((a,b)=>b-a).forEach((element,index)=>{
+if(arr.length<3){
+  arr.push(element)
+}
+  })
+return arr.reduce((previous,current)=>{
+        return previous+current
+      },0)
+ 
+}
