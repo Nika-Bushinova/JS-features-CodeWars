@@ -235,3 +235,16 @@ return arr.reduce((previous,current)=>{
       },0)
  
 }
+
+/////////////////////////////////////////////////////////////
+
+function sentence(List) {
+    let sorted  ={}
+  let arr=[]
+sorted=List.sort((a,b)=>Object.keys(a)[0]-Object.keys(b)[0])
+ sorted.forEach((el,i)=>{
+    for (key in sorted[i])
+  arr.push(sorted[i][key])
+  })
+  return arr.join(' ')
+}
