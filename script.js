@@ -248,3 +248,20 @@ sorted=List.sort((a,b)=>Object.keys(a)[0]-Object.keys(b)[0])
   })
   return arr.join(' ')
 }
+
+
+/////////////////////////////////////////////////////////////////
+
+ function dataReverse(data) {
+   let arr=[];
+   let reverseArr=[]
+   let result=[]
+ while (data.length > 0) {
+ arr.push(data.splice(0,8))
+ }
+reverseArr=arr.reverse()
+   reverseArr.forEach((el)=>{
+   el.forEach((e)=>{ result.push(e)})
+   })
+return result
+}
