@@ -267,3 +267,35 @@ reverseArr=arr.reverse()
    })
 return result
 }
+
+/*18.Count strings in objects
+
+Create a function strCount (takes an object as argument) that will count all string values inside an object. For example:
+strCount({
+  first: "1",
+  second: "2",
+  third: false,
+  fourth: ["anytime",2,3,4],
+  fifth:  null
+  })
+  //returns 3
+  */
+function strCount(obj){
+  let count=0;
+  if( typeof obj==='string'){
+    console.log(obj)
+   count+=1
+  }
+    if(Array.isArray(obj)){
+        obj.forEach((el)=>{
+        strCount(el)
+        })
+    }
+if(typeof(obj)==='object'){
+  for(let k in obj){
+   count+=strCount(obj[k])
+  }
+}
+  return count
+}
+
