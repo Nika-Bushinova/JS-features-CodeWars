@@ -299,3 +299,119 @@ if(typeof(obj)==='object'){
   return count
 }
 
+/*19. After yet another dispute on their game the Bingo Association decides to change course and automate the game.
+
+Can you help the association by writing a method to create a random Bingo card?
+
+Bingo Cards
+A Bingo card contains 24 unique and random numbers according to this scheme:
+
+5 numbers from the B column in the range 1 to 15
+5 numbers from the I column in the range 16 to 30
+4 numbers from the N column in the range 31 to 45
+5 numbers from the G column in the range 46 to 60
+5 numbers from the O column in the range 61 to 75
+Task
+Write the function get_card()/getCard(). The card must be returned as an array of Bingo style numbers:
+
+[ 'B14', 'B12', 'B5', 'B6', 'B3', 'I28', 'I27', ... ]
+The numbers must be in the order of their column: B, I, N, G, O. Within the columns the order of the numbers is random.
+*/
+
+function getCard() {
+
+    function generate(prefix, start, end, quantity){
+        let arr=[]
+      let i=0;
+      while(i<quantity){
+      let number=Math.floor(Math.random() * (end - start) + start)
+        if(!arr.includes(prefix+number)){
+          arr.push(prefix+number)
+        }else{
+          i--
+        }
+        i++
+        }
+      return arr
+    }
+  let b=(generate('B', 1, 15, 5))
+  let i=(generate('I', 16, 30, 5))
+  let n=(generate('N', 31, 45, 4))
+  let g=(generate('G', 46, 60, 5))
+  let o=(generate('O', 61, 75, 5))
+  
+  return [...b,...i,...n,...g,...o]
+}
+/*20.Story
+Due to lack of maintenance the minute-hand has fallen off Town Hall clock face.
+
+And because the local council has lost most of our tax money to a Nigerian email scam there are no funds to fix the clock properly.
+
+Instead, they are asking for volunteer programmers to write some code that tell the time by only looking at the remaining hour-hand!
+
+What a bunch of cheapskates!
+
+Can you do it?
+
+Kata
+Given the angle (in degrees) of the hour-hand, return the time in 12 hour HH:MM format. Round down to the nearest minute.
+
+Examples
+12:00 = 0 degrees
+
+03:00 = 90 degrees
+
+06:00 = 180 degrees
+
+09:00 = 270 degrees
+
+12:00 = 360 degrees
+
+Notes
+0 <= angle <= 360
+
+Do not make any AM or PM assumptions for the HH:MM result. They are indistinguishable for this Kata.
+
+3 o'clock is 03:00, not 15:00
+7 minutes past midnight is 12:07
+7 minutes past noon is also 12:07
+*/
+var whatTimeIsIt = function(angle) {
+ let hours=Math.floor(angle/30)===0?'12':Math.floor(angle/30)/10<1?'0'+Math.floor(angle/30):Math.floor(angle/30)
+  let minutes=Math.floor(angle*2%60)/10<1?'0'+Math.floor(angle*2%60):Math.floor(angle*2%60)
+ return hours+':'+minutes
+}
+
+/*21.Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
+
+Per Wikipedia, a prime number ( or a prime ) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+Requirements
+You can assume you will be given an integer input.
+You can not assume that the integer will be only positive. You may be given negative numbers as well ( or 0 ).
+NOTE on performance: There are no fancy optimizations required, but still the most trivial solutions might time out. Numbers go up to 2^31 ( or similar, depending on language ). Looping all the way up to n, or n/2, will be too slow.
+*/
+function isPrime(num) {
+  let sqr = Math.sqrt(num)
+  for (let i = 2; i <= sqr; i++) {
+    if (num % i === 0) {
+      return false
+    }
+  }
+  return sqr > 1
+}
+
+/*22. You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:*/
+function likes(names) {
+  names = names || [];
+  switch(names.length){
+    case 0: return 'no one likes this'; break;
+    case 1: return names[0] + ' likes this'; break;
+    case 2: return names[0] + ' and ' + names[1] + ' like this'; break;
+    case 3: return names[0] + ', ' + names[1] + ' and ' + names[2] + ' like this'; break;
+    default: return names[0] + ', ' + names[1] + ' and ' + (names.length - 2) + ' others like this';
+  }
+}
+
